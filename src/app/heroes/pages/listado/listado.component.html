@@ -1,7 +1,51 @@
-<p>listado works!</p>
+<h1>Listado de Heroes</h1>
+<mat-divider></mat-divider>
+<!-- El mat-divider genera una linea de division como un tag hr -->
 
-<ul>
-    <li *ngFor="let heroe of heroes">
-        {{heroe.superhero}}
-    </li>
-</ul>
+<br>
+
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="20">
+    <!-- El fxLayout o flex layout lo que hace es generar el flex. La clase row agrupa todo el contenido en una unica fila y la clase wrap envia el contenido que no entra en otra fila debajo. con fxLayoutAlign="center" fxLayoutGap="20" defino que se muestren 3 tarjetas (30%) y que tengan una separacion entre si de 20px 
+    Cuando la pantalla es muy chica usamos fxLayout.xs="column" para mostrar TODO como columna y ya no como fila-->
+
+    <div fxFlex="20" 
+        fxFlex.lg="15" 
+        fxFlex.sm="30" 
+        *ngFor="let heroe of heroes">
+        <!-- El fxflex le dice el ancho de cada elemento (tarjeta) en 20% de su tamaño original -->
+    <mat-card>
+            <mat-card-header>
+                <!-- esta etiqueta se usa para definir la cabecera -->
+                <mat-card-title> {{heroe.superhero}} </mat-card-title>
+                <mat-card-subtitle> {{heroe.alter_ego}} </mat-card-subtitle>
+            </mat-card-header>
+
+            <img mat-card-image src="assets/heroes/{{heroe.id}}.jpg">
+
+            <mat-card-content>
+                <!-- esta etiqueta se usa para encerrar el contenido -->
+                <h3>{{heroe.publisher}}</h3>
+                <p>
+                    <strong>Primera aparición</strong> {{heroe.first_appearance}}
+                    <br>
+                    <strong>Personaje: </strong> {{heroe.characters}}
+                </p>
+            </mat-card-content>
+
+            <mat-card-actions>
+                <!-- esta etiqueta se usa para encerrar los botones -->
+
+                <button mat-button color="warn">
+                    Leer más... 
+                </button>
+
+                <button mat-button color="info">
+                    Editar
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    
+</div>
+
+

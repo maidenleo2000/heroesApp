@@ -1,0 +1,34 @@
+
+<!-- Aca hago uso del atributo valor que recibo en el input. Anteriormente el nombre usado era heroe directamente pero como le cambie el nombre para diferenciar como viajan los datos ahora aca tengo que usar el atributo valor para acceder a todos los contenidos del objeto heroe -->
+<mat-card>
+    <mat-card-header>
+        <!-- esta etiqueta se usa para definir la cabecera -->        
+        <mat-card-title> {{valor.superhero}} </mat-card-title>
+        <mat-card-subtitle> {{valor.alter_ego}} </mat-card-subtitle>
+    </mat-card-header>
+
+    <img mat-card-image [src]="valor | imagen">
+    <!-- Aca si uso directamente el string para la url que va en src se escribe asi src='dominio.com' pero si uso el pipe se encierra entre corchetes para que funcione asi [src]=cualquiervalor | pipe. -->
+
+    <mat-card-content>
+        <!-- esta etiqueta se usa para encerrar el contenido -->
+        <h3>{{valor.publisher}}</h3>
+        <p>
+            <strong>Primera aparición</strong> {{valor.first_appearance}}
+            <br>
+            <strong>Personaje: </strong> {{valor.characters}}
+        </p>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <!-- esta etiqueta se usa para encerrar los botones -->
+
+        <button mat-button color="warn" [routerLink]="['/heroes', valor.id]">
+            Leer más... 
+        </button>
+
+        <button mat-button color="info" [routerLink]= "['/heroes/editar', valor.id]">
+            Editar
+        </button>
+    </mat-card-actions>
+</mat-card>
